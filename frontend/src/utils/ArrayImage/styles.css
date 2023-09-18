@@ -1,0 +1,23 @@
+.array-container {
+  display: block;
+  max-width: 98vw;
+  width: auto;
+  margin: 0 auto;
+  overflow-x: auto;
+  white-space: nowrap;
+  border: 5px solid #000F;
+  padding: 6px;
+  background-color: #FFF2; 
+  box-shadow: 0 0 2px 2px #000, inset 0 0 3px 3px #aaa;
+  box-sizing: content-box;
+}
+
+.array-cell {
+  width: 20px; /* você pode ajustar para o tamanho desejado */
+  height: 20px;
+  border: 1px solid #edd; /* opcional, para visualizar as células */
+  background-color: aqua;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}

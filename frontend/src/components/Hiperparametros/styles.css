@@ -1,0 +1,37 @@
+.hiperparametros {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 60px;
+  padding: 8px;
+  background-color: #fffd;
+  z-index: 2;
+}
+
+.hiperparametros .cnn {
+  position: relative;
+}
+
+.hiperparametros .cnn .img1 {
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.hiperparametros .cnn .linhaImg1 {
+  position: absolute;
+  left: 0;
+}
+
+
+.hiperparametros .cnn .conv .imgConv {
+  background-color: #F00;
+  position: absolute;
+  transform: scale(0.1) translateY(-450%);
+  left: 0;
+}

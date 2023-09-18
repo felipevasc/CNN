@@ -1,0 +1,39 @@
+.App {
+  text-align: center;
+  background: none;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+/* Estilizando a barra de rolagem vertical */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Estilizando o track (trilha) da barra de rolagem */
+::-webkit-scrollbar-track {
+  background: #797e9e;
+}
+
+/* Estilizando o handle (pega) da barra de rolagem */
+::-webkit-scrollbar-thumb {
+  background: #162269;
+}
+
+/* Estilizando o handle (pega) da barra de rolagem ao passar o mouse */
+::-webkit-scrollbar-thumb:hover {
+  background: #162269;
+}
+
+/* Estilizando o handle (pega) da barra de rolagem */
+*::-webkit-scrollbar-thumb {
+  background-color: #162269;
+  border-radius: 6px;
+}
+
+/* Estilizando o track (trilha) da barra de rolagem */
+*::-webkit-scrollbar-track-piece {
+  background-color: #797e9e;
+}

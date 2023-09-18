@@ -1,0 +1,20 @@
+.matrix-container, .imagemOriginal > div {
+  display: flex;
+  border: 5px solid #000F;
+  padding: 2px;
+  background-color: #FFF9; 
+  box-shadow: 0 0 2px 2px #000, inset 0 0 3px 3px #aaa;
+  border-radius: 5px; 
+  overflow: hidden;
+  overflow-x: auto;
+  margin-right: 5px;
+  min-width: 13px;
+}
+
+.matrix-cell {
+  width: 10px; /* você pode ajustar para o tamanho desejado */
+  height: 10px;
+  border: 1px solid #edd; /* opcional, para visualizar as células */
+  background-color: aqua;
+  display: block;
+}

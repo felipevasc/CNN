@@ -1,0 +1,121 @@
+
+.parametros {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.parametros div {
+  text-align: left;
+}
+.parametros input {
+  border-radius: 4px;
+  margin-right: 8px;
+  padding-left: 8px;
+  
+}
+.parametros label {
+  color: #333f;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.parametros label:nth-child(2) input {
+  margin-top: 8px;
+}
+.parametros label:first-child {
+  font-weight: bold;
+  margin-bottom: 0;
+  font-size: 12px;
+  color: #000;
+}
+.parametros label:not(:first-child) {
+  font-weight: normal;
+}
+
+.inicioTreinamento {
+  font-family: 'Arial', sans-serif;
+  background: none;
+  background-color: #f0f7fa; /* tom de azul claro como fundo base */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.parametros {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;  
+  background-color: #0003;
+  box-shadow: 0px 0px 10px 1px rgba(28, 128, 255, 0.5);
+  width: 80%;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.parametros div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+
+.parametros input[type='number'] {
+  border: none;
+  border-bottom: 2px solid #00f;
+  background-color: transparent;
+  padding: 10px 15px;
+  color: #eee;
+  font-size: 16px;
+  outline: none;
+  transition: border-bottom 0.3s ease;
+  background-color: #FFFD;
+  color: #333;
+}
+
+.parametros input[type='number']:focus {
+  border-bottom-color: rgb(62, 146, 62); 
+}
+
+.parametros input[type='radio'] {
+  margin-right: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(40, 177, 182);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: rgb(62, 146, 62); 
+}
+
+button:disabled {
+  background-color: #777;
+  cursor: not-allowed;
+}
+
+.tooltip, .react-tooltip {
+  background: none !important;
+  background-color: #000 !important;
+  opacity: 1 !important;
+  font-size: 20px !important;
+  text-align: left !important;
+}
+.token.operator {
+  background: none;
+}
+.react-tooltip-arrow {
+  display: none !important;
+}

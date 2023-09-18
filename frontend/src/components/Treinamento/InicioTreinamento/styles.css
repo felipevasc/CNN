@@ -1,0 +1,29 @@
+.inicioTreinamento {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  overflow-y: scroll;
+  width: 100vw;
+  min-height: 3000vh;
+  text-align: center;  
+}
+
+input[type='radio'] {
+  display: inline-block;
+  background-color: white;
+  border: 2px solid white;
+}
+
+input[type='radio']::before {
+  content: ' ';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 100%;
+  border: 3px solid white;
+}
+
+input[type='radio']:checked:before {
+  background-color: rgb(59, 97, 153);
+}

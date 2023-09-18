@@ -1,0 +1,7 @@
+.imagens {
+  position: relative;
+  top: 50px;
+  left: 50px;
+  transform: translateX(-50%);
+  background-color: #eee;
+}
