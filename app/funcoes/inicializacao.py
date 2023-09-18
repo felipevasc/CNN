@@ -39,21 +39,15 @@ class Inicializacao:
     pesos_fc = []
     biases_fc = []
     
-    # Calcula a saída das camadas convolucionais
     entrada_anterior = self.calcular_saida_camadas_convolucionais(altura_imagem, largura_imagem, hiperparametros)
     
-    # Para a primeira camada totalmente conectada, podemos manter a mesma quantidade de neurônios que a saída das camadas convolucionais
     qtd_neuronios = entrada_anterior
     print('qtd', qtd_neuronios)
-    
-    # Inicialização da primeira camada totalmente conectada
     pesos = self.filtro_he((qtd_neuronios, entrada_anterior))
     bias = np.zeros((qtd_neuronios, 1))
     pesos_fc.append(pesos)
     biases_fc.append(bias)
     entrada_anterior = qtd_neuronios
-    
-    # Para a segunda camada totalmente conectada (camada de saída), teremos 10 neurônios (para o MNIST)
     qtd_neuronios = 10
     pesos = self.filtro_he((qtd_neuronios, entrada_anterior))
     bias = np.zeros((qtd_neuronios, 1))

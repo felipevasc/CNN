@@ -10,12 +10,10 @@ class BackPropagation:
   
   def calcular_entropia_cruzada(self, Y_verdadeiro, Y_previsto):
     m = Y_verdadeiro.shape[1]
-    epsilon = 1e-15  # pequena constante para estabilidade numérica
+    epsilon = 1e-15  
 
-    # Calcula a entropia cruzada
     custo = -1/m * np.sum(np.multiply(Y_verdadeiro, np.log(Y_previsto + epsilon)))
 
-    # Garante que o custo tenha a forma esperada (pode haver problemas numéricos)
     custo = np.squeeze(custo)
     return custo
 
@@ -41,7 +39,7 @@ class BackPropagation:
         entrada_fc = entrada_fc.reshape(1, -1)
     N = entrada_fc.shape[0]
     dlogits = valores_previstos - valores_esperados
-    dlogits /= N  # Média sobre todos os exemplos
+    dlogits /= N  
     if dlogits.ndim == 1:
         dlogits = dlogits.reshape(1, -1)
     print(entrada_fc.shape, dlogits.shape)
@@ -58,8 +56,8 @@ class BackPropagation:
 
   def backward_maxpool(self, dA, cache):
     (A_prev, W, b, Z) = cache
-    stride = 2  # Por exemplo, suponhamos um stride de 2. Ajuste conforme necessário.
-    f = 2  # Suponhamos uma janela de 2x2. Ajuste conforme necessário.
+    stride = 2  
+    f = 2  
     m, n_H, n_W, n_C = dA.shape
     m, n_H_prev, n_W_prev, n_C_prev = A_prev.shape
     dA_prev = np.zeros_like(A_prev)
@@ -118,7 +116,6 @@ class BackPropagation:
                 inicio_w = w * stride
                 fim_w = min(inicio_w + tamanho_janela, saida_ativacao.shape[1])
 
-                # Use a altura e largura reais do slice ao criar ones_matrix
                 altura_slice = max(fim_h - inicio_h, 0)
                 largura_slice = max(fim_w - inicio_w, 0)
                 ones_matrix = np.ones((altura_slice, largura_slice))
@@ -134,32 +131,15 @@ class BackPropagation:
     return gradiente_antes_pooling
 
   def retropropagacao_convolutiva(self, gradiente_pos_pooling, cache):
-    """
-    Implementa a retropropagação para uma camada convolucional.
-    
-    Argumentos:
-    gradiente_pos_pooling -- Gradiente da camada posterior, shape (quantidade_exemplos, altura_saida, largura_saida, canais_saida)
-    cache -- Informações salvas durante a propagação para frente (entrada, pesos, bias, saida_convolucao, saida_ativacao, saida_pooling)
-    
-    Retorna:
-    gradiente_entrada -- Gradiente com relação à entrada da camada convolucional
-    gradiente_pesos -- Gradiente com relação aos pesos (filtros)
-    gradiente_bias -- Gradiente com relação aos bias
-    """
-    
-    # Recupera informações do cache
     entrada, pesos, bias, saida_convolucao, saida_ativacao, saida_pooling, informacoes_pooling = cache
     
-    # Quantidade de exemplos, dimensões da entrada e dos filtros
     quantidade_exemplos, altura_prev, largura_prev, canais_prev = entrada.shape
     tamanho_filtro, tamanho_filtro, canais_prev, canais = pesos.shape
     
-    # Inicializa os gradientes com zeros
     gradiente_entrada = np.zeros(entrada.shape)
     gradiente_pesos = np.zeros(pesos.shape)
     gradiente_bias = np.zeros(bias.shape)
 
-    # Itera sobre cada exemplo
     for i in range(quantidade_exemplos):
         entrada_individual = entrada[i]
         
@@ -167,13 +147,10 @@ class BackPropagation:
             for w in range(largura_prev):
                 for c in range(canais):
                     
-                    # Define a região atual da entrada
                     inicio_vertical = h
                     fim_vertical = inicio_vertical + tamanho_filtro
                     inicio_horizontal = w
                     fim_horizontal = inicio_horizontal + tamanho_filtro
-                    
-                    # Retropropagação do pooling até a ativação
                     if tipo_pooling == "max":
                         entrada_slice = entrada_individual[inicio_vertical:fim_vertical, inicio_horizontal:fim_horizontal, c]
                         mascara_maximo = (entrada_slice == np.max(entrada_slice))
@@ -181,11 +158,8 @@ class BackPropagation:
                     elif tipo_pooling == "media":
                         gradiente_media = gradiente_pos_pooling[i, h, w, c] / (tamanho_filtro * tamanho_filtro)
                         gradiente_entrada[i, inicio_vertical:fim_vertical, inicio_horizontal:fim_horizontal, c] += np.ones((tamanho_filtro, tamanho_filtro)) * gradiente_media
-                    
-                    # Retropropagação da ativação até a convolução
                     gradiente_convolucao = ...
                     
-                    # Retropropagação da convolução até os pesos, bias e entrada
                     entrada_slice = entrada_individual[inicio_vertical:fim_vertical, inicio_horizontal:fim_horizontal, :]
                     gradiente_pesos[:,:,:,c] += entrada_slice * gradiente_convolucao
                     gradiente_bias[:,:,:,c] += gradiente_convolucao
