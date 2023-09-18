@@ -9,7 +9,7 @@ Implementação didática do algoritmo CNN para apresentação na disciplina de 
 - Rodar o programa:
   `python home.py`
 
-## Frontend - Pasta: front/
+## Frontend - Pasta: frontend/
 - Usar node 16 e instalar as dependências com:
   `npm install`
 - Rodar o programa:
